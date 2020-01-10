@@ -1,0 +1,27 @@
+
+package com.paypal.eds.test
+
+import org.apache.spark.SparkConf
+import org.apache.spark.sql.SparkSession
+
+object sparkSessionGenerator {
+
+  def sparkSessionCreator(): SparkSession={
+    val sparkConf = new SparkConf().setMaster("local[*]")
+      .set("spark.sql.warehouse.dir", "hdfs://localhost:8020/user/hive/warehouse").set("hive.metastore.uris", "thrift://localhost:9083")
+    val spark = SparkSession.
+      builder.
+      config(sparkConf).
+      enableHiveSupport.
+      getOrCreate
+    spark
+  }
+
+  def main(args: Array[String]): Unit = {
+    val spark = sparkSessionCreator()
+    val gimelDataSet = com.paypal.gimel.DataSet(spark)
+    val dataFrameRead = gimelDataSet.read("dl_common_streaming_stage.snapshot_metadata")
+    dataFrameRead.createOrReplaceTempView("tempView")
+    spark.sql("select * from tempView").show(100,false)
+  }
+}
