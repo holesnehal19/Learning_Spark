@@ -66,6 +66,11 @@ while running application you can add more master
 2.spark.cores.max : maximum amount of cpu cores to req for the application from across the cluster
 3.spark.executor.memory : memory for each executor
 ```
+standalone for single app - 
+
+![spark-standalone-single app](https://user-images.githubusercontent.com/53288566/72234482-4211a880-35f3-11ea-8b6a-a083b08be069.png)
+
+standalone for multiple app - 
 
 3. Yarn Mode :
 		Yarn is them resource manager. Here master machine run as resource manager and slave machine in hadoop cluster run as a node manager. 1 resource manager and multiple node manager. Node manager shares live resource info to resource manager. for eg about memory,core.
