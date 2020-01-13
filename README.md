@@ -70,6 +70,9 @@ while running application you can add more master
 3. Yarn Mode :
 		Yarn is them resource manager. Here master machine run as resource manager and slave machine in hadoop cluster run as a node manager. 1 resource manager and multiple node manager. Node manager shares live resource info to resource manager. for eg about memory,core.
    	client machine submit the application to resource manager then resource manager find the node manager which is free. if it find any node free it will allocate it as application master then application master ask to resoutrce manager i need 2 more container then resource manager will give 2 container i.e node manager in key value pair. then that 2 container register back with application master now your application is running. now application master can directly communicate with client machine.if resource manager crashes then application master keeps running bit if resource manager crashes then application master not negotiate new container or resource in runtime.
+![spark-yarn mode](https://user-images.githubusercontent.com/53288566/72234278-35408500-35f2-11ea-828e-854f3337ca28.png)
+
+
 
 
 
