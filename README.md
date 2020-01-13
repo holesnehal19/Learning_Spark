@@ -77,9 +77,14 @@ standalone for multiple app -
 
 3. Yarn Mode :
 		Yarn is them resource manager. Here master machine run as resource manager and slave machine in hadoop cluster run as a node manager. 1 resource manager and multiple node manager. Node manager shares live resource info to resource manager. for eg about memory,core.
-   	client machine submit the application to resource manager then resource manager find the node manager which is free. if it find any node free it will allocate it as application master then application master ask to resoutrce manager i need 2 more container then resource manager will give 2 container i.e node manager in key value pair. then that 2 container register back with application master now your application is running. now application master can directly communicate with client machine.if resource manager crashes then application master keeps running bit if resource manager crashes then application master not negotiate new container or resource in runtime.
+   	client machine submit the application to resource manager then resource manager find the node manager which is free. if it find any node free it will allocate it as application master then application master ask to resoutrce manager i need 2 more container then resource manager will give 2 container i.e node manager in key value pair. then that 2 container register back with application master now your application is running. now application master can directly communicate with client machine.if resource manager crashes then application master keeps running bit if resource manager crashes then application master not negotiate new container or resource in runtime.if application master get failed then applications master allocate a new application master on node manager
 ![spark-yarn mode](https://user-images.githubusercontent.com/53288566/72234278-35408500-35f2-11ea-828e-854f3337ca28.png)
 
+- note : node manager has application master and resource manager has application's master.Resource manager contain scheduler and applications master. if application master get failed then applications master allocate a new application master on node manager.
+
+There is two ways to run spark on yarn :
+					- client mode
+				        - cluster mode
 
 
 
