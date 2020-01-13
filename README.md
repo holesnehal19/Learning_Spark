@@ -59,6 +59,19 @@ if executor jvm crashes worker will restart it and if worker jvm crashes the mas
 
 while running application you can add more master
 
+1 worker node have multiple executor. 1 worker start 2 executor for 2 different application not for same. if u want to start 2 executor for same application then add one more worker
+- standalone mode setting :
+```
+1. app submited will run FIFO mode by default
+2.spark.cores.max : maximum amount of cpu cores to req for the application from across the cluster
+3.spark.executor.memory : memory for each executor
+```
+
+3. Yarn Mode :
+		Yarn is them resource manager. Here master machine run as resource manager and slave machine in hadoop cluster run as a node manager. 1 resource manager and multiple node manager. Node manager shares live resource info to resource manager. for eg about memory,core.
+   	client machine submit the application to resource manager then resource manager find the node manager which is free. if it find any node free it will allocate it as application master then application master ask to resoutrce manager i need 2 more container then resource manager will give 2 container i.e node manager in key value pair. then that 2 container register back with application master now your application is running. now application master can directly communicate with client machine.if resource manager crashes then application master keeps running bit if resource manager crashes then application master not negotiate new container or resource in runtime.
+
+
 
             
 
